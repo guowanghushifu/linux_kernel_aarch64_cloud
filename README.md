@@ -4,8 +4,7 @@
 
 推荐sysctl参数：
 
-``
-net.core.default_qdisc = fq
+<pre><code>net.core.default_qdisc = fq
 net.ipv4.tcp_congestion_control = bbr
 net.ipv4.tcp_rmem = 8192 262144 536870912
 net.ipv4.tcp_wmem = 4096 16384 536870912
@@ -36,4 +35,4 @@ net.ipv4.ip_forward = 1
 fs.file-max = 104857600
 fs.inotify.max_user_instances = 8192
 fs.nr_open = 1048576
-``
+</code></pre>
