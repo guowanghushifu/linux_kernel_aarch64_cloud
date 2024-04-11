@@ -2,7 +2,7 @@
 
 自己编译的适用于aarch64（arm64）架构vps的linux内核，添加了Xanmod 所有的网络相关patch。 自己在sysctl中启用bbr即可，然后modinfo tcp_bbr，可以看到版本号为3
 
-推荐sysctl参数：
+推荐sysctl参数如下，懒人版命令复制即可：
 
 <pre><code>
 cat > /etc/sysctl.conf << \EOF
@@ -33,9 +33,9 @@ net.ipv4.tcp_keepalive_time = 600
 net.ipv4.tcp_retries1 = 3
 net.ipv4.tcp_retries2 = 5
 net.ipv4.tcp_no_metrics_save = 1
-EOF
 net.ipv4.ip_forward = 1
 fs.file-max = 104857600
 fs.inotify.max_user_instances = 8192
 fs.nr_open = 1048576
+EOF
 </code></pre>
