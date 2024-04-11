@@ -1,9 +1,10 @@
 # linux_kernel_aarch64_cloud
 
-自己编译的适用于aarch64（arm64）架构vps的linux内核，添加了Xanmod 所有的网络相关patch。 自己在sysctl中启用bbr即可，然后modinfo tcp_bbr，可以看到版本号为3
-
+自己编译的适用于aarch64（arm64）架构vps的linux内核，添加了Xanmod 所有的网络相关patch。   
+将deb放到一个单独的文件夹，然后 dpkg -i *.deb  
+自己在sysctl中启用bbr，然后modinfo tcp_bbr，可以看到版本号为3  
 推荐sysctl参数如下，懒人版命令复制到ssh窗口执行，接着 **`sysctl --system`** 即可：  
-**你写在/etc/sysctl.conf中的配置项优先级更高，自己注意下不要冲突了。**
+**你写在/etc/sysctl.conf中的配置项优先级更高，自己注意下不要冲突了。**  
 
 <pre><code>
 cat > /etc/sysctl.d/99-sysctl.conf << \EOF
