@@ -4,7 +4,9 @@
 
 推荐sysctl参数：
 
-<pre><code>net.core.default_qdisc = fq
+<pre><code>
+cat > /etc/sysctl.conf << \EOF
+net.core.default_qdisc = fq
 net.ipv4.tcp_congestion_control = bbr
 net.ipv4.tcp_rmem = 8192 262144 536870912
 net.ipv4.tcp_wmem = 4096 16384 536870912
@@ -31,6 +33,7 @@ net.ipv4.tcp_keepalive_time = 600
 net.ipv4.tcp_retries1 = 3
 net.ipv4.tcp_retries2 = 5
 net.ipv4.tcp_no_metrics_save = 1
+EOF
 net.ipv4.ip_forward = 1
 fs.file-max = 104857600
 fs.inotify.max_user_instances = 8192
