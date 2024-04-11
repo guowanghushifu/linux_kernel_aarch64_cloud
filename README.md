@@ -2,10 +2,11 @@
 
 自己编译的适用于aarch64（arm64）架构vps的linux内核，添加了Xanmod 所有的网络相关patch。 自己在sysctl中启用bbr即可，然后modinfo tcp_bbr，可以看到版本号为3
 
-推荐sysctl参数如下，懒人版命令复制即可：
+推荐sysctl参数如下，懒人版命令复制到ssh窗口执行，接着sysctl --system即可：  
+**你写在/etc/sysctl.conf中的配置项优先级更高，自己注意下。**
 
 <pre><code>
-cat > /etc/sysctl.conf << \EOF
+cat > /etc/sysctl.d/99-sysctl.conf << \EOF
 net.core.default_qdisc = fq
 net.ipv4.tcp_congestion_control = bbr
 net.ipv4.tcp_rmem = 8192 262144 536870912
