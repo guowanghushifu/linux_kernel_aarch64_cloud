@@ -37,6 +37,7 @@ net.ipv4.tcp_keepalive_time = 600
 net.ipv4.tcp_retries1 = 3
 net.ipv4.tcp_retries2 = 5
 net.ipv4.tcp_no_metrics_save = 1
+net.ipv4.tcp_ecn = 0
 net.ipv4.ip_forward = 1
 fs.file-max = 104857600
 fs.inotify.max_user_instances = 8192
