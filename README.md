@@ -11,11 +11,13 @@ cat > /etc/sysctl.d/99-sysctl.conf << \EOF
 net.core.default_qdisc = fq
 net.ipv4.tcp_congestion_control = bbr
 net.ipv4.tcp_rmem = 8192 262144 536870912
-net.ipv4.tcp_wmem = 4096 16384 536870912
+net.ipv4.tcp_wmem = 4096 262144 536870912
 net.ipv4.tcp_adv_win_scale = -2
 net.ipv4.tcp_collapse_max_bytes = 6291456
 net.ipv4.tcp_notsent_lowat = 131072
 net.ipv4.ip_local_port_range = 1024 65535
+net.core.rmem_default = 262144
+net.core.wmem_default = 262144
 net.core.rmem_max = 536870912
 net.core.wmem_max = 536870912
 net.core.somaxconn = 32768
