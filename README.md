@@ -48,3 +48,49 @@ fs.inotify.max_user_instances = 8192
 fs.nr_open = 1048576
 EOF
 </code></pre>
+
+性能差点的机器试试下面的参数
+
+<pre><code>
+cat > /etc/sysctl.d/99-sysctl.conf << \EOF
+net.core.default_qdisc = fq
+net.ipv4.tcp_congestion_control = bbr
+net.core.wmem_default = 65536
+net.core.rmem_default = 262144
+net.core.rmem_max = 33554432
+net.core.wmem_max = 33554432
+net.ipv4.tcp_rmem = 8192 262144 33554432
+net.ipv4.tcp_wmem = 4096 65536  33554432
+net.ipv4.udp_rmem_min = 8192
+net.ipv4.udp_wmem_min = 8192
+net.ipv4.tcp_collapse_max_bytes = 6291456
+net.ipv4.tcp_notsent_lowat = 131072
+net.ipv4.ip_local_port_range = 1024 65535
+net.core.somaxconn = 32768
+net.core.netdev_max_backlog = 32768
+net.ipv4.tcp_max_tw_buckets = 65536
+net.ipv4.tcp_abort_on_overflow = 1
+net.ipv4.tcp_slow_start_after_idle = 0
+net.ipv4.tcp_timestamps = 1
+net.ipv4.tcp_syncookies = 0
+net.ipv4.tcp_syn_retries = 3
+net.ipv4.tcp_synack_retries = 3
+net.ipv4.tcp_max_syn_backlog = 32768
+net.ipv4.tcp_fin_timeout = 15
+net.ipv4.tcp_keepalive_intvl = 3
+net.ipv4.tcp_keepalive_probes = 5
+net.ipv4.tcp_keepalive_time = 600
+net.ipv4.tcp_retries1 = 3
+net.ipv4.tcp_retries2 = 5
+net.ipv4.tcp_no_metrics_save = 1
+net.ipv4.ip_forward = 1
+net.ipv4.tcp_ecn = 0
+net.ipv4.tcp_fastopen = 3
+net.ipv4.tcp_mtu_probing = 2
+net.ipv4.tcp_base_mss = 1460
+net.ipv4.tcp_min_snd_mss = 536
+fs.file-max = 104857600
+fs.inotify.max_user_instances = 8192
+fs.nr_open = 1048576
+EOF
+</code></pre>
